@@ -21,3 +21,70 @@ function scr () {
 let s = scr()
 s.scrap(document.body)
 console.log(s.arey())
+
+//=================================Card============================================
+function userCard(namber) {
+    let stamp = Date.now()
+    let time = new Date(stamp)
+    let card = {
+        balance:100,
+        transactionLimit:100,
+        historyLogs: [],
+        key: namber,
+    }
+    return{
+        getCardOptions: function (){
+            return card;
+        },
+        putCredits:function (balans) {
+            card.balance = card.balance + balans
+            let transaction = {
+                operationType: 'Received credits',
+                credits: balans,
+                operationTime: `${time}`
+            }
+            card.historyLogs.push(transaction);
+        },
+        takeCredits:function (balans1) {
+            if (card.balance >= balans1 && card.transactionLimit >= balans1){
+                card.balance = card.balance - balans1
+            }else {
+                console.error("error")
+            }
+            let transaction = {
+                operationType:  'Withdrawal of credits',
+                credits: balans1,
+                operationTime: `${time}`
+            }
+            card.historyLogs.push(transaction);
+
+        },
+        setTransactionLimit:function (balans3) {
+            card.transactionLimit = balans3
+            let transaction = {
+                operationType:  'Transaction Limit change',
+                credits: balans3,
+                operationTime: `${time}`
+            }
+            card.historyLogs.push(transaction);
+        },
+        transferCredits: function (credit, cards) {
+            userCard(cards).getCardOptions().balance+=credit;
+            if (card.balance >= credit && card.transactionLimit >= credit){
+                credit = credit + credit * 0.5 / 100;
+                card.balance -= credit;
+            }else {
+                console.error("error")
+            }
+
+
+        },
+    }
+
+}
+let card = userCard(1)
+card.putCredits(200)
+card.setTransactionLimit(200)
+card.takeCredits(110)
+card.transferCredits(122,3)
+console.log(card.getCardOptions())
