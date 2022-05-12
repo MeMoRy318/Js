@@ -69,10 +69,11 @@ function userCard(namber) {
             card.historyLogs.push(transaction);
         },
         transferCredits: function (credit, cards) {
-            userCard(cards).getCardOptions().balance+=credit;
             if (card.balance >= credit && card.transactionLimit >= credit){
                 credit = credit + credit * 0.5 / 100;
                 card.balance -= credit;
+               cards.getCardOptions().balance+=credit;
+
             }else {
                 console.error("error")
             }
@@ -83,8 +84,10 @@ function userCard(namber) {
 
 }
 let card = userCard(1)
+let card1 = userCard(3)
 card.putCredits(200)
 card.setTransactionLimit(200)
 card.takeCredits(110)
-card.transferCredits(122,3)
+card.transferCredits(100,card1)
 console.log(card.getCardOptions())
+console.log(card1.getCardOptions())
