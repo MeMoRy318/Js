@@ -91,3 +91,4 @@ card.takeCredits(110)
 card.transferCredits(10,card1)
 console.log(card.getCardOptions())
 console.log(card1.getCardOptions())
+
