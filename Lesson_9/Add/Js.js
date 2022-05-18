@@ -267,21 +267,22 @@ function foo(strtElement) {
     }
 userList(strtElement)
 }
-usersList.forEach(value => foo(value))
+    usersList.forEach(value => foo(value))
 
 
-// function userList(user) {
-//     for (const startElement in user) {
-//         const userInfo = user[startElement];
-//         typeof userInfo !== 'object' ? console.log(`${startElement} - ${user[startElement]}`)
-//             : console.log(`${startElement}`);
-//         if (Array.isArray(userInfo)) {
-//             userInfo.forEach(value => userList(value))
-//         }else if (typeof userInfo === 'object'){
-//             userList(userInfo)
-//         };
-//
-//     };
-//
-// };
-// usersList.forEach(value => userList(value));
+ // function userList(user) {
+ //     for (const startElement in user) {
+ //         const userInfo = user[startElement]
+ //         typeof userInfo !== 'object' ? console.log(`${startElement} - ${user[startElement]}`)
+ //             : console.log(`${startElement}`)
+ //         if (Array.isArray(userInfo)) {
+ //             userInfo.forEach(value => userList(value))
+ //         }else if (typeof userInfo === 'object'){
+ //             userList(userInfo)
+ //         }
+ //
+ //     }
+ //
+ // }
+
+ // usersList.forEach(value => userList(value));
