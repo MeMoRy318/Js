@@ -1,5 +1,5 @@
 
- const usersList = [
+    let usersList = [
         {
             id: 1,
             name: 'Leanne Graham',
@@ -12,11 +12,7 @@
                 zipcode: '92998-3874',
                 geo: {
                     lat: '-37.3159',
-                    lng: '81.1496',
-                    info:{
-                        status:true,
-                        array:[{name:"Vasya",age:21,status:true},{name:"Sveta",age:22,status:true, array:[{status:false}]}]
-                    }
+                    lng: '81.1496'
                 }
             },
             phone: '1-770-736-8031 x56442',
@@ -33,10 +29,6 @@
             username: 'Antonette',
             email: 'Shanna@melissa.tv',
             address: {
-                info:{
-                    status:true,
-                    array:[{name:"Vasya",age:21,status:true},{name:"Sveta",age:22,status:true, array:[{status:false}]}]
-                },
                 street: 'Victor Plains',
                 suite: 'Suite 879',
                 city: 'Wisokyburgh',
@@ -240,16 +232,56 @@
         }
     ];
 
+// Створити під кожен елемент окремий блок. В цьому блоці, під кожну властивість,
+// та властивості внутрішніх об'єктів створити свої окремі блок.
 
-function userList(user) {
-    for (const startElement in user) {
-        const userInfo = user[startElement];
-       typeof userInfo !== 'object' ? console.log(`${startElement} - ${user[startElement]}`) : console.log(`${startElement}`);
-        if (Array.isArray(userInfo)) {
-            userInfo.forEach(value => userList(value))
-            }else if (typeof userInfo === 'object'){
-            userList(userInfo)
-        };
-        };
-    };
-usersList.forEach(value => userList(value));
+// за допомоги рекурсії перебрати структуру сторінки. зробити об'єкт, всі заголовки покласти в
+// (масив) характеристику headings,всі параграфи покласти в характеристику (масив) paragraphs
+function foo(strtElement) {
+    const divElement = document.createElement("div")
+    document.body.appendChild(divElement)
+    divElement.style.border = "1px solid red"
+    divElement.style.marginBottom = "20px"
+    const userList = (user)=> {
+        for (const key in user) {
+            const userInfo = user[key]
+            if (typeof userInfo !== 'object') {
+                const h1Element = document.createElement("h1")
+                h1Element.innerText = `${key}`
+
+                const pElement = document.createElement("p")
+                pElement.innerText = `${user[key]}`
+
+                divElement.append(h1Element, pElement)
+            }
+            if (typeof userInfo === "object" ){
+                const h1Element = document.createElement("h1")
+                h1Element.innerText = `${key}`
+                divElement.append(h1Element)
+
+
+                userList(userInfo)
+            }
+        }
+
+    }
+userList(strtElement)
+}
+usersList.forEach(value => foo(value))
+
+
+// function userList(user) {
+//     for (const startElement in user) {
+//         const userInfo = user[startElement];
+//         typeof userInfo !== 'object' ? console.log(`${startElement} - ${user[startElement]}`)
+//             : console.log(`${startElement}`);
+//         if (Array.isArray(userInfo)) {
+//             userInfo.forEach(value => userList(value))
+//         }else if (typeof userInfo === 'object'){
+//             userList(userInfo)
+//         };
+//
+//     };
+//
+// };
+// usersList.forEach(value => userList(value));
