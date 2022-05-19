@@ -269,20 +269,34 @@ userList(strtElement)
 }
     usersList.forEach(value => foo(value))
 
+//     function userList(user) {
+//     for (const startElement in user) {
+//         const userInfo = user[startElement]
+//         typeof userInfo !== 'object' ? console.log(`${startElement} - ${user[startElement]}`)
+//             : console.log(`${startElement}`)
+//         if (Array.isArray(userInfo)) {
+//             userInfo.forEach(value => userList(value))
+//         }else if (typeof userInfo === 'object'){
+//             userList(userInfo)
+//         }
+//     }
+// }
+// usersList.forEach(value => userList(value));
 
- // function userList(user) {
- //     for (const startElement in user) {
- //         const userInfo = user[startElement]
- //         typeof userInfo !== 'object' ? console.log(`${startElement} - ${user[startElement]}`)
- //             : console.log(`${startElement}`)
- //         if (Array.isArray(userInfo)) {
- //             userInfo.forEach(value => userList(value))
- //         }else if (typeof userInfo === 'object'){
- //             userList(userInfo)
- //         }
- //
- //     }
- //
- // }
+    const headings = []
+    const paragraphs = []
 
- // usersList.forEach(value => userList(value));
+    const scraper = (startElement)=>{
+    const chidrenElement = startElement.children
+    for (const time of chidrenElement) {
+        if (time.localName === "h1"){
+            headings.push(time)
+        }else if (time.localName === "p"){
+            paragraphs.push(time)
+        }
+        scraper(time)
+    }
+}
+    scraper(document.body)
+    console.log(headings)
+    console.log(paragraphs)
