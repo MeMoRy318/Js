@@ -4,7 +4,7 @@ const divElement = document.createElement("div");
 divElement.setAttribute("id","text");
 divElement.innerText = "hello";
 
-const button = document.createElement("button");
+ const button = document.createElement("button");
 button.innerText = "Click";
 
 document.body.append(button,divElement);
