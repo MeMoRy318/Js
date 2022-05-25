@@ -48,9 +48,9 @@ button1.addEventListener("click",function () {
     divElement.classList.toggle("xxx");
 
 });
-// -   Создать список комментариев , пример объекта коментария - {title : 'lorem', body:'lorem ipsum dolo sit ameti'}.
-//     Вывести список комментариев в документ, каждый в своем блоке.
-//     Добавьте каждому комментарию по кнопке для сворачивания его body.
+//Создать список комментариев , пример объекта коментария - {title : 'lorem', body:'lorem ipsum dolo sit ameti'}.
+//Вывести список комментариев в документ, каждый в своем блоке.
+//Добавьте каждому комментарию по кнопке для сворачивания его body.
 const div = document.createElement("div");
 document.body.append(div);
 
