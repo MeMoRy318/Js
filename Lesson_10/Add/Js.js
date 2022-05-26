@@ -176,22 +176,103 @@ label3.appendChild(inputElement3);
 
 document.body.append(br,label,label2,label3);
 
+const divElement1 = document.createElement("div");
+document.body.appendChild(divElement1);
+
 inputElement.onclick = function (){
-    for (const time of usersWithAddress) {
-        const divElement1 = document.createElement("div");
-        document.body.appendChild(divElement1);
+    if (inputElement.checked) {
+        divElement1.innerText = "";
+        for (const time of usersWithAddress) {
+            if (!time.status) {
+                for (const key in time) {
+                    const address = time[key]
 
-        const userAdres = time;
+                     if (typeof address !== "object") {
 
-        for (const key in userAdres) {
-            if (key === "address"){
-              const pElement = document.createElement("p");
-              pElement.innerText = `${key} - ${userAdres[key]}`;
-                divElement1.appendChild(pElement)
+                         const pElement = document.createElement("p");
+                         pElement.innerText = `${key} - ${time[key]}`;
+                         divElement1.appendChild(pElement);
+                     };
+
+
+                    if (key === "address"){
+                        for (const key in address) {
+                            const pElement = document.createElement("p");
+                            pElement.innerText = `${key} - ${address[key]}`;
+                            divElement1.appendChild(pElement);
+                        };
+                    };
+                };
             };
-
         };
+    }else if (!inputElement.checked){
+        divElement1.innerText = "";
     };
+
+};
+inputElement2.onclick = function (){
+
+    if (inputElement2.checked) {
+        divElement1.innerText = "";
+        for (const time of usersWithAddress) {
+            if (time.age >= 29) {
+                for (const key in time) {
+                    const address = time[key]
+
+                     if (typeof address !== "object") {
+
+                         const pElement = document.createElement("p");
+                         pElement.innerText = `${key} - ${time[key]}`;
+                         divElement1.appendChild(pElement);
+                     };
+
+
+                    if (key === "address"){
+                        for (const key in address) {
+                            const pElement = document.createElement("p");
+                            pElement.innerText = `${key} - ${address[key]}`;
+                            divElement1.appendChild(pElement);
+                        };
+                    };
+                };
+            };
+        };
+    }else if (!inputElement.checked){
+        divElement1.innerText = "";
+    };
+
+};
+inputElement3.onclick = function (){
+
+    if (inputElement3.checked) {
+        divElement1.innerText = "";
+        for (const time of usersWithAddress) {
+            if (time.address.city === "Kyiv") {
+                for (const key in time) {
+                    const address = time[key]
+
+                     if (typeof address !== "object") {
+
+                         const pElement = document.createElement("p");
+                         pElement.innerText = `${key} - ${time[key]}`;
+                         divElement1.appendChild(pElement);
+                     };
+
+
+                    if (key === "address"){
+                        for (const key in address) {
+                            const pElement = document.createElement("p");
+                            pElement.innerText = `${key} - ${address[key]}`;
+                            divElement1.appendChild(pElement);
+                        };
+                    };
+                };
+            };
+        };
+    }else if (!inputElement.checked){
+        divElement1.innerText = "";
+    };
+
 };
 
 
@@ -202,6 +283,13 @@ inputElement.onclick = function (){
 //     Когда все дети заканчиваются, мы выходим из данного дочернего элемента и переходим к следующему, лежащему с ним на одном уровне
 //
 // - Напишите «Карусель» – ленту изображений, которую можно листать влево-вправо нажатием на стрелочки.
-//
+
 //     Завдання важке для розуміння, але дуже легке в реалізації. Тут треба буде погуглити
-// *** При виділені сегменту тексту на сторінці він стає жирний/курсивний/або якось іншим способом змінює свій стан
+// *** При виділені сегменту тексту на сторінці він стає жирний/курсивний/
+// або якось іншим способом змінює свій стан
+document.body.onmouseup = function (ev) {
+    const select = window.getSelection();
+    const text = ev.path[0].innerText
+    const text1 = ev.path[0]
+text1.innerHTML = text.replaceAll(select,`<strong>${select}</strong>`)
+}
