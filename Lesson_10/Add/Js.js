@@ -288,8 +288,10 @@ inputElement3.onclick = function (){
 // *** При виділені сегменту тексту на сторінці він стає жирний/курсивний/
 // або якось іншим способом змінює свій стан
 document.body.onmouseup = function (ev) {
-    const select = window.getSelection();
+    const select = window.getSelection().toString();
     const text = ev.path[0].innerText
     const text1 = ev.path[0]
-text1.innerHTML = text.replaceAll(select,`<strong>${select}</strong>`)
+    if (text1.localName === "p" || text1.localName === "div") {
+        text1.innerHTML = text.replaceAll(select, `<strong>${select}</strong>`)
+    }
 }
