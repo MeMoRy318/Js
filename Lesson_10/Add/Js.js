@@ -291,7 +291,7 @@ document.body.onmouseup = function (ev) {
     const select = window.getSelection().toString();
     const text = ev.path[0].innerText
     const text1 = ev.path[0]
-    if (text1.localName === "p" || text1.localName === "div") {
+    if (text1.localName === "p") {
         text1.innerHTML = text.replaceAll(select, `<strong>${select}</strong>`)
     }
 }
