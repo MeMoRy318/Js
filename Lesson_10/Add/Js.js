@@ -290,8 +290,8 @@ inputElement3.onclick = function (){
 document.body.onmouseup = function (ev) {
     const select = window.getSelection().toString();
     const text = ev.path[0].innerText
-    const text1 = ev.path[0]
-    if (text1.localName === "p" || text1.localName === "button") {
-        text1.innerHTML = text.replaceAll(select, `<strong>${select}</strong>`)
+    const element = ev.path[0]
+    if (element.localName === "p" || element.localName === "button") {
+        element.innerHTML = text.replaceAll(select, `<strong>${select}</strong>`)
     }
 }
