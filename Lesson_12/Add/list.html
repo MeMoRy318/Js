@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .img{
+            height: 400px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    const productList = JSON.parse(localStorage.getItem("prductList"));
+    const divWrap = document.createElement("div");
+    divWrap.classList.add("wrap");
+
+    document.body.appendChild(divWrap);
+
+    for (let i = 0; i < productList.length; i++) {
+        let x = i;
+       productList[i].id = +[i]+1
+
+        const divBlock = document.createElement("div");
+       divWrap.appendChild(divBlock);
+
+        const h2Element = document.createElement("h2");
+       h2Element.innerText = productList[i].product;
+
+       const pElement = document.createElement("p");
+       pElement.innerText = `quantity - ${productList[i].quantity}`;
+
+       const p = document.createElement("p");
+       p.innerText = ` price - ${productList[i].price}`;
+
+        const img = document.createElement("img");
+        img.src = productList[i].img;
+
+        const button = document.createElement("button");
+        button.innerText = "clean All";
+
+        button.onclick = function (){
+         localStorage.clear()
+            location.reload()
+        };
+
+        const buttonClean = document.createElement("button");
+        buttonClean.innerText = "clean"
+
+        buttonClean.onclick = function () {
+        const productList = JSON.parse(localStorage.getItem("prductList"));
+
+        productList.splice(x,1)
+            localStorage.setItem("prductList",JSON.stringify(productList))
+
+            location.reload()
+        }
+       divBlock.append(h2Element,img,pElement,p,button,buttonClean);
+    }
+
+</script>
+</body>
+</html>
