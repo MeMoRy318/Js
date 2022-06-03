@@ -5,8 +5,8 @@
 
 let elementList = [];
 
- function scraper (startElement,x)  {
-     if (x === 1) {
+ function scraper (startElement)  {
+     if (elementList.length === 0) {
 
          const buttonBefore = document.createElement("button");
          buttonBefore.innerText = "Before";
@@ -45,5 +45,5 @@ let elementList = [];
          scraper(childrens,2);
      };
  };
- scraper(document.body,1);
+ scraper(document.body);
 
