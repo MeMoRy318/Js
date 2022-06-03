@@ -54,7 +54,6 @@ function foo(startElement) {
     foo(startElement.firstElementChild);
    } else if (startElement.nextElementSibling) {
     foo(startElement.nextElementSibling);
-   }else {
    }
  }
  buttonAfter.onclick = function () {
