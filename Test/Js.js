@@ -47,15 +47,15 @@ function foo(startElement) {
     if (start.children[i].nextElementSibling) {
      foo(start.children[i].nextElementSibling);
      i++
-    }
-   }
+    };
+   };
    if (startElement.firstElementChild) {
     console.log(startElement.firstElementChild);
     foo(startElement.firstElementChild);
    } else if (startElement.nextElementSibling) {
     foo(startElement.nextElementSibling);
-   }
- }
+   };
+ };
  buttonAfter.onclick = function () {
   if (startElement.previousElementSibling  ){
    console.log(startElement.previousElementSibling);
@@ -63,9 +63,9 @@ function foo(startElement) {
   }else if(startElement.parentElement && startElement.parentElement !== start) {
     console.log(startElement.parentElement);
     foo(startElement.parentElement);
-  }
- }
-}
+  };
+ };
+};
  foo(start)
 }
 foo1(document.body)

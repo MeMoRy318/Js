@@ -1,0 +1,29 @@
+.wrap{
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 15px;
+
+}
+.block{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    flex-direction: column;
+    row-gap: 15px;
+    border: black 1px solid;
+}
+.blockComents{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1%;
+    row-gap: 15px;
+}
+.coments{
+    width: 24%;
+    text-align: center;
+    border: black 1px solid;
+}
